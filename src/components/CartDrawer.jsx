@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { X, ShoppingBag, Minus, Plus, Trash2, Loader2 } from 'lucide-react';
 import { useCart } from './CartContext';
@@ -22,6 +22,21 @@ export default function CartDrawer() {
       setCheckingOut(false);
     }
   };
+
+  // If the shopper hits "back" from Stripe Checkout (or cancels and returns)
+  // without completing payment, the browser can restore this page from its
+  // back-forward cache with the button frozen mid-"Redirecting…" state.
+  // Reset it whenever the page becomes visible again.
+  useEffect(() => {
+    const resetIfStuck = () => setCheckingOut(false);
+    window.addEventListener('pageshow', resetIfStuck);
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') resetIfStuck();
+    });
+    return () => {
+      window.removeEventListener('pageshow', resetIfStuck);
+    };
+  }, []);
 
   return (
     <>

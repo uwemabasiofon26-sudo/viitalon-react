@@ -70,7 +70,7 @@ export default function Footer() {
               Fully disclosed, high-strength supplements for training, strength, recovery, and everyday vitality.
             </p>
             <div className="flex gap-4 mt-6">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-ash hover:text-vital-bright transition-colors">
+              <a href="https://www.facebook.com/share/1CwX9phcTh/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-ash hover:text-vital-bright transition-colors">
                 <Facebook size={18} />
               </a>
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-ash hover:text-vital-bright transition-colors">
