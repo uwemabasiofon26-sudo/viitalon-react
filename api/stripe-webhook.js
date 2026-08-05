@@ -70,8 +70,7 @@ function getSiteUrl() {
 async function sendViaResend({ from, to, subject, html }) {
   const resendApiKey = process.env.RESEND_API_KEY;
   if (!resendApiKey) {
-    console.warn('RESEND_API_KEY not set — skipping email:', subject);
-    return;
+    throw new Error(`RESEND_API_KEY not set — cannot send email: ${subject}`);
   }
 
   const res = await fetch('https://api.resend.com/emails', {
@@ -85,7 +84,7 @@ async function sendViaResend({ from, to, subject, html }) {
 
   if (!res.ok) {
     const errText = await res.text().catch(() => '');
-    console.error('Resend API error:', res.status, errText, '—', subject);
+    throw new Error(`Resend API error ${res.status} for "${subject}": ${errText}`);
   }
 }
 
@@ -302,16 +301,26 @@ export default async function handler(req, res) {
       const session = await stripe.checkout.sessions.retrieve(event.data.object.id, {
         expand: ['line_items'],
       });
-      // Run both sends concurrently, and don't let one failure block the other.
-      const results = await Promise.allSettled([
-        sendCustomerConfirmation(session),
-        sendMerchantNotification(session),
-      ]);
-      results.forEach((r, i) => {
-        if (r.status === 'rejected') {
-          console.error(`Email send #${i} failed:`, r.reason);
-        }
-      });
+
+      // Send sequentially, not concurrently — firing both at once can trip
+      // Resend's per-second rate limit and cause one to silently fail.
+      try {
+        await sendCustomerConfirmation(session);
+        console.log('Customer confirmation email sent for session', session.id);
+      } catch (err) {
+        console.error('Customer confirmation email FAILED for session', session.id, '—', err);
+      }
+
+      // Small gap before the second send, as extra insurance against
+      // Resend's per-second rate limit on top of sending sequentially.
+      await new Promise((resolve) => setTimeout(resolve, 600));
+
+      try {
+        await sendMerchantNotification(session);
+        console.log('Merchant notification email sent for session', session.id);
+      } catch (err) {
+        console.error('Merchant notification email FAILED for session', session.id, '—', err);
+      }
     } catch (err) {
       // Log and swallow — Stripe retries the webhook on non-2xx responses,
       // and we don't want an email hiccup to trigger repeated retries.
