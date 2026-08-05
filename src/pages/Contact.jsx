@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, MapPin, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 
@@ -113,17 +113,37 @@ export default function Contact() {
                   <Mail size={16} className="text-vital-bright" />
                 </div>
                 <div>
-                  <div className="font-mono text-[10px] tracking-widest uppercase text-ash mb-1">Email</div>
+                  <div className="font-mono text-[10px] tracking-widest uppercase text-ash mb-1">General Enquiries</div>
+                  <a href="mailto:info@viitalon.com" className="text-cream hover:text-vital-bright transition-colors font-body text-base font-medium">info@viitalon.com</a>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <div className="w-10 h-10 border border-line rounded-sm flex items-center justify-center flex-shrink-0">
+                  <Mail size={16} className="text-vital-bright" />
+                </div>
+                <div>
+                  <div className="font-mono text-[10px] tracking-widest uppercase text-ash mb-1">Customer Support</div>
                   <a href="mailto:support@viitalon.com" className="text-cream hover:text-vital-bright transition-colors font-body text-base font-medium">support@viitalon.com</a>
                 </div>
               </div>
               <div className="flex gap-4">
                 <div className="w-10 h-10 border border-line rounded-sm flex items-center justify-center flex-shrink-0">
-                  <Phone size={16} className="text-vital-bright" />
+                  <Mail size={16} className="text-vital-bright" />
                 </div>
                 <div>
-                  <div className="font-mono text-[10px] tracking-widest uppercase text-ash mb-1">Phone</div>
-                  <a href="tel:+642108490063" className="text-cream hover:text-vital-bright transition-colors font-body text-base font-medium">+64 210 849 0063</a>
+                  <div className="font-mono text-[10px] tracking-widest uppercase text-ash mb-1">Wholesale Enquiries</div>
+                  <a href="mailto:wholesale@viitalon.com" className="text-cream hover:text-vital-bright transition-colors font-body text-base font-medium">wholesale@viitalon.com</a>
+                  <p className="text-ash text-sm leading-relaxed mt-1">Interested in stocking VIITALON products? Contact us for wholesale pricing and partnership opportunities.</p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <div className="w-10 h-10 border border-line rounded-sm flex items-center justify-center flex-shrink-0">
+                  <Mail size={16} className="text-vital-bright" />
+                </div>
+                <div>
+                  <div className="font-mono text-[10px] tracking-widest uppercase text-ash mb-1">Purchasing & Supplier Enquiries</div>
+                  <a href="mailto:purchasing@viitalon.com" className="text-cream hover:text-vital-bright transition-colors font-body text-base font-medium">purchasing@viitalon.com</a>
+                  <p className="text-ash text-sm leading-relaxed mt-1">Suppliers and manufacturers can contact our purchasing team regarding ingredients, packaging and production opportunities.</p>
                 </div>
               </div>
               <div className="flex gap-4">

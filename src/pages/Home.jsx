@@ -3,7 +3,7 @@ import Hero from '@/components/home/Hero';
 import BrandStory from '@/components/home/BrandStory';
 import ProductShowcase from '@/components/home/ProductShowcase';
 import WhyViitalon from '@/components/home/WhyViitalon';
-import Testimonials from '@/components/home/Testimonials';
+import ComingSoon from '@/components/home/ComingSoon';
 import IngredientSpotlight from '@/components/home/IngredientSpotlight';
 import BlogTeaser from '@/components/home/BlogTeaser';
 
@@ -14,7 +14,7 @@ export default function Home() {
       <BrandStory />
       <ProductShowcase />
       <WhyViitalon />
-      <Testimonials />
+      <ComingSoon />
       <IngredientSpotlight />
       <BlogTeaser />
     </>
