@@ -11,15 +11,27 @@ export default function Footer() {
   const [submitting, setSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleSubscribe = (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault();
     if (!email) return;
     setSubmitting(true);
-    setTimeout(() => {
-      toast({ title: "Subscribed", description: "You're on the list. Live stronger." });
+    try {
+      const res = await fetch('/api/newsletter-subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error(data.error || 'Something went wrong. Please try again.');
+      }
+      toast({ title: "Subscribed", description: "Check your inbox — you're on the list. Live stronger." });
       setEmail('');
+    } catch (err) {
+      toast({ title: "Couldn't subscribe", description: err.message, variant: 'destructive' });
+    } finally {
       setSubmitting(false);
-    }, 800);
+    }
   };
 
   return (
