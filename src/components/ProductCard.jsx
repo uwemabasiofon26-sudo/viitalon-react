@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import SignalLine from './SignalLine';
 import { formatPrice } from '@/lib/utils';
+import { STORE_OUT_OF_STOCK } from '@/lib/productData';
 
 export default function ProductCard({ product, index = 0 }) {
   return (
     <Link
       to={`/products/${product.slug}`}
-      className="group relative bg-ink-surface border border-line rounded-sm p-6 md:p-8 flex flex-col transition-all duration-300 hover:border-vital hover:bg-ink-surface/80">
+      className={`group relative bg-ink-surface border border-line rounded-sm p-6 md:p-8 flex flex-col transition-all duration-300 hover:border-vital hover:bg-ink-surface/80 ${
+        STORE_OUT_OF_STOCK ? 'opacity-80' : ''
+      }`}>
       
       {/* Number */}
       <div className="flex items-center justify-between mb-6 hidden">
@@ -29,9 +32,14 @@ export default function ProductCard({ product, index = 0 }) {
         alt={product.name}
         className={`w-full h-full transition-transform duration-700 group-hover:scale-105 ${
           product.slug === 'the-stack' ? 'object-contain p-3' : 'object-cover'
-        }`} />
+        } ${STORE_OUT_OF_STOCK ? 'grayscale' : ''}`} />
 
         }
+        {STORE_OUT_OF_STOCK && (
+          <div className="absolute top-3 right-3 font-mono text-[10px] tracking-widest uppercase text-cream bg-ink/90 border border-line px-2.5 py-1 rounded-sm">
+            Out of Stock
+          </div>
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-ink-deep/80 via-transparent to-transparent pointer-events-none" />
       </div>
 

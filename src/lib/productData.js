@@ -1,4 +1,10 @@
 // Shared product data — used for seeding and as fallback
+
+// Temporary site-wide switch: when true, every product shows as Out of
+// Stock and purchasing is disabled everywhere, without editing each
+// product individually. Flip back to false to resume selling.
+export const STORE_OUT_OF_STOCK = true;
+
 export const PRODUCTS = [
   {
     name: 'VORTEX',

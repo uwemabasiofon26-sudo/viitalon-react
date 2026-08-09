@@ -5,7 +5,7 @@ import { base44 } from '@/api/base44Client';
 import { useCart } from '@/components/CartContext';
 import ProductImageSlideshow from '@/components/ProductImageSlideshow';
 import TransparencyPanel from '@/components/TransparencyPanel';
-import { PRODUCTS } from '@/lib/productData';
+import { PRODUCTS, STORE_OUT_OF_STOCK } from '@/lib/productData';
 import { formatPrice } from '@/lib/utils';
 
 export default function ProductDetail() {
@@ -59,6 +59,7 @@ export default function ProductDetail() {
   }
 
   const handleAddToCart = () => {
+    if (STORE_OUT_OF_STOCK) return;
     addItem(product, qty);
   };
 
@@ -87,6 +88,11 @@ export default function ProductDetail() {
             <div className="font-mono text-xs text-ash">
               {formatPrice(product.price)}
             </div>
+            {STORE_OUT_OF_STOCK && (
+              <div className="font-mono text-[10px] tracking-widest uppercase text-cream bg-ink-surface border border-line px-2.5 py-1 rounded-sm">
+                Out of Stock
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -172,24 +178,27 @@ export default function ProductDetail() {
 
             {/* Add to cart */}
             <div className="flex items-center gap-4 mb-6">
-              <div className="flex items-center border border-line rounded-sm">
-                <button onClick={() => setQty(Math.max(1, qty - 1))} className="px-3 py-3 text-ash hover:text-cream transition-colors">
+              <div className="flex items-center border border-line rounded-sm opacity-60">
+                <button disabled={STORE_OUT_OF_STOCK} onClick={() => setQty(Math.max(1, qty - 1))} className="px-3 py-3 text-ash hover:text-cream transition-colors disabled:cursor-not-allowed">
                   <Minus size={14} />
                 </button>
                 <span className="px-4 font-mono text-sm text-cream">{qty}</span>
-                <button onClick={() => setQty(qty + 1)} className="px-3 py-3 text-ash hover:text-cream transition-colors">
+                <button disabled={STORE_OUT_OF_STOCK} onClick={() => setQty(qty + 1)} className="px-3 py-3 text-ash hover:text-cream transition-colors disabled:cursor-not-allowed">
                   <Plus size={14} />
                 </button>
               </div>
               <button
                 onClick={handleAddToCart}
-                className="flex-1 bg-vital hover:bg-vital-bright text-cream font-mono text-xs tracking-widest uppercase px-6 py-3 rounded-sm transition-colors flex items-center justify-center gap-2">
+                disabled={STORE_OUT_OF_STOCK}
+                className="flex-1 bg-vital hover:bg-vital-bright text-cream font-mono text-xs tracking-widest uppercase px-6 py-3 rounded-sm transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-vital">
                 
-                <ShoppingBag size={14} /> {product.cta_text}
+                <ShoppingBag size={14} /> {STORE_OUT_OF_STOCK ? 'Out of Stock' : product.cta_text}
               </button>
             </div>
             <p className="font-mono text-[10px] tracking-widest uppercase text-ash">
-              {product.made_in && `Made in ${product.made_in} · `}Free shipping over NZ$50
+              {STORE_OUT_OF_STOCK
+                ? "Currently unavailable — check back soon."
+                : <>{product.made_in && `Made in ${product.made_in} · `}Free shipping over NZ$50</>}
             </p>
 
             {/* Transparency Panel */}
@@ -218,9 +227,10 @@ export default function ProductDetail() {
           </div>
           <button
             onClick={handleAddToCart}
-            className="bg-vital hover:bg-vital-bright text-cream font-mono text-[10px] md:text-xs tracking-widest uppercase px-4 md:px-6 py-3 rounded-sm transition-colors flex items-center gap-2 flex-shrink-0">
+            disabled={STORE_OUT_OF_STOCK}
+            className="bg-vital hover:bg-vital-bright text-cream font-mono text-[10px] md:text-xs tracking-widest uppercase px-4 md:px-6 py-3 rounded-sm transition-colors flex items-center gap-2 flex-shrink-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-vital">
             
-            <ShoppingBag size={14} /> <span className="hidden md:inline">{product.cta_text}</span><span className="md:hidden">Add</span>
+            <ShoppingBag size={14} /> <span className="hidden md:inline">{STORE_OUT_OF_STOCK ? 'Out of Stock' : product.cta_text}</span><span className="md:hidden">{STORE_OUT_OF_STOCK ? 'Sold Out' : 'Add'}</span>
           </button>
         </div>
       </div>
