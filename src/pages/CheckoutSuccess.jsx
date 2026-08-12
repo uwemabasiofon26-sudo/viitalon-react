@@ -36,7 +36,7 @@ export default function CheckoutSuccess() {
 
   if (!sessionId) {
     return (
-      <div className="pt-32 md:pt-40 pb-24 px-6 min-h-[70vh] flex items-center">
+      <div className="pt-40 md:pt-48 pb-24 px-6 min-h-[70vh] flex items-center">
         <div className="max-w-2xl mx-auto text-center">
           <div className="eyebrow mb-3">No Order Found</div>
           <h1 className="font-display font-light text-3xl md:text-5xl text-cream mb-4">
@@ -57,7 +57,7 @@ export default function CheckoutSuccess() {
   }
 
   return (
-    <div className="pt-32 md:pt-40 pb-24 px-6 min-h-[70vh]">
+    <div className="pt-40 md:pt-48 pb-24 px-6 min-h-[70vh]">
       <div className="max-w-2xl mx-auto text-center">
         <div className="w-14 h-14 rounded-full bg-vital/20 border border-vital-bright flex items-center justify-center mx-auto mb-6">
           <Check size={24} className="text-vital-bright" />

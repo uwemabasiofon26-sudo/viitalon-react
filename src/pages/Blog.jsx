@@ -19,7 +19,7 @@ export default function Blog() {
   }, []);
 
   return (
-    <div className="pt-32 md:pt-40">
+    <div className="pt-40 md:pt-48">
       {/* Header */}
       <section className="px-6 pb-12 md:pb-16">
         <div className="max-w-7xl mx-auto">

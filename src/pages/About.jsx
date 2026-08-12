@@ -11,7 +11,7 @@ const values = [
 
 export default function About() {
   return (
-    <div className="pt-32 md:pt-40">
+    <div className="pt-40 md:pt-48">
       {/* Hero */}
       <section className="px-6 pb-16 md:pb-24">
         <div className="max-w-4xl mx-auto text-center">

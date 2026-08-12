@@ -10,7 +10,8 @@ const productLinks = [
 { name: 'Somnus', slug: 'somnus', goal: 'Rest — Sleep & Recovery' },
 { name: 'Magnesium Glycinate', slug: 'magnesium-glycinate', goal: 'Clarity — Calm & Wellness' },
 { name: 'Vigor', slug: 'vigor', goal: "Drive — Men's Vitality" },
-{ name: 'The Stack', slug: 'the-stack', goal: 'Complete — All Five Formulas' }];
+{ name: 'The Stack', slug: 'the-stack', goal: 'Complete — All Five Formulas' },
+{ name: 'Redline Stack', slug: 'redline-stack', goal: "Total — Men's Performance System" }];
 
 
 const navLinks = [
@@ -50,7 +51,7 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-9 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled ?
         'bg-ink/95 backdrop-blur-md border-b border-line py-4' :
         'bg-transparent py-6'}`

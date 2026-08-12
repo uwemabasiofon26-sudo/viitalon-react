@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 
 export default function CheckoutCancel() {
   return (
-    <div className="pt-32 md:pt-40 pb-24 px-6 min-h-[70vh] flex items-center">
+    <div className="pt-40 md:pt-48 pb-24 px-6 min-h-[70vh] flex items-center">
       <div className="max-w-2xl mx-auto text-center">
         <div className="eyebrow mb-3">Checkout Cancelled</div>
         <h1 className="font-display font-light text-3xl md:text-5xl text-cream mb-4">

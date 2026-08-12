@@ -58,13 +58,15 @@ export default function ProductDetail() {
 
   }
 
+  const outOfStock = STORE_OUT_OF_STOCK || product.in_stock === false;
+
   const handleAddToCart = () => {
-    if (STORE_OUT_OF_STOCK) return;
+    if (outOfStock) return;
     addItem(product, qty);
   };
 
   return (
-    <div className="pt-28 md:pt-32">
+    <div className="pt-36 md:pt-40">
       {/* Breadcrumb */}
       <div className="px-6 py-6">
         <div className="max-w-7xl mx-auto">
@@ -88,7 +90,7 @@ export default function ProductDetail() {
             <div className="font-mono text-xs text-ash">
               {formatPrice(product.price)}
             </div>
-            {STORE_OUT_OF_STOCK && (
+            {outOfStock && (
               <div className="font-mono text-[10px] tracking-widest uppercase text-cream bg-ink-surface border border-line px-2.5 py-1 rounded-sm">
                 Out of Stock
               </div>
@@ -179,24 +181,24 @@ export default function ProductDetail() {
             {/* Add to cart */}
             <div className="flex items-center gap-4 mb-6">
               <div className="flex items-center border border-line rounded-sm opacity-60">
-                <button disabled={STORE_OUT_OF_STOCK} onClick={() => setQty(Math.max(1, qty - 1))} className="px-3 py-3 text-ash hover:text-cream transition-colors disabled:cursor-not-allowed">
+                <button disabled={outOfStock} onClick={() => setQty(Math.max(1, qty - 1))} className="px-3 py-3 text-ash hover:text-cream transition-colors disabled:cursor-not-allowed">
                   <Minus size={14} />
                 </button>
                 <span className="px-4 font-mono text-sm text-cream">{qty}</span>
-                <button disabled={STORE_OUT_OF_STOCK} onClick={() => setQty(qty + 1)} className="px-3 py-3 text-ash hover:text-cream transition-colors disabled:cursor-not-allowed">
+                <button disabled={outOfStock} onClick={() => setQty(qty + 1)} className="px-3 py-3 text-ash hover:text-cream transition-colors disabled:cursor-not-allowed">
                   <Plus size={14} />
                 </button>
               </div>
               <button
                 onClick={handleAddToCart}
-                disabled={STORE_OUT_OF_STOCK}
+                disabled={outOfStock}
                 className="flex-1 bg-vital hover:bg-vital-bright text-cream font-mono text-xs tracking-widest uppercase px-6 py-3 rounded-sm transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-vital">
                 
-                <ShoppingBag size={14} /> {STORE_OUT_OF_STOCK ? 'Out of Stock' : product.cta_text}
+                <ShoppingBag size={14} /> {outOfStock ? 'Out of Stock' : product.cta_text}
               </button>
             </div>
             <p className="font-mono text-[10px] tracking-widest uppercase text-ash">
-              {STORE_OUT_OF_STOCK
+              {outOfStock
                 ? "Currently unavailable — check back soon."
                 : <>{product.made_in && `Made in ${product.made_in} · `}Free shipping over NZ$50</>}
             </p>
@@ -227,10 +229,10 @@ export default function ProductDetail() {
           </div>
           <button
             onClick={handleAddToCart}
-            disabled={STORE_OUT_OF_STOCK}
+            disabled={outOfStock}
             className="bg-vital hover:bg-vital-bright text-cream font-mono text-[10px] md:text-xs tracking-widest uppercase px-4 md:px-6 py-3 rounded-sm transition-colors flex items-center gap-2 flex-shrink-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-vital">
             
-            <ShoppingBag size={14} /> <span className="hidden md:inline">{STORE_OUT_OF_STOCK ? 'Out of Stock' : product.cta_text}</span><span className="md:hidden">{STORE_OUT_OF_STOCK ? 'Sold Out' : 'Add'}</span>
+            <ShoppingBag size={14} /> <span className="hidden md:inline">{outOfStock ? 'Out of Stock' : product.cta_text}</span><span className="md:hidden">{outOfStock ? 'Sold Out' : 'Add'}</span>
           </button>
         </div>
       </div>

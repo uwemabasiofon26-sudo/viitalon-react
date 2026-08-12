@@ -45,7 +45,7 @@ export default function BlogPost() {
   }
 
   return (
-    <div className="pt-28 md:pt-32">
+    <div className="pt-36 md:pt-40">
       <div className="px-6 py-6">
         <div className="max-w-3xl mx-auto">
           <Link to="/blog" className="inline-flex items-center gap-2 font-mono text-[10px] tracking-widest uppercase text-ash hover:text-vital-bright transition-colors">

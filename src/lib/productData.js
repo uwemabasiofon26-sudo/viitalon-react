@@ -2,13 +2,14 @@
 
 // Temporary site-wide switch: when true, every product shows as Out of
 // Stock and purchasing is disabled everywhere, without editing each
-// product individually. Flip back to false to resume selling.
-export const STORE_OUT_OF_STOCK = true;
+// product individually. Flip back to true to pause the whole store.
+export const STORE_OUT_OF_STOCK = false;
 
 export const PRODUCTS = [
   {
     name: 'VORTEX',
     slug: 'vortex',
+    in_stock: false,
     category: 'Pre-Workout Performance',
     tagline: 'Energy, focus, blood flow, and endurance — built to have you ready from the first rep to the final set.',
     description: 'A high-performance pre-workout formula supporting energy, focus, blood flow, muscular endurance, and training intensity.',
@@ -197,6 +198,42 @@ export const PRODUCTS = [
       { name: 'SOMNUS — Sleep & Recovery', dose: '30 servings', benefit: 'Deep sleep & overnight recovery' },
       { name: 'MAGNESIUM GLYCINATE', dose: '15 servings', benefit: 'Muscle function & calm' },
       { name: 'VIGOR — Men\'s Vitality', dose: '15 servings', benefit: 'Vitality & performance' },
+    ],
+  },
+  {
+    name: 'REDLINE STACK',
+    slug: 'redline-stack',
+    category: "Men's Performance System",
+    tagline: 'TESTCORE + FLOWCORE — a total men\'s performance system for training, energy, circulation and everyday vitality.',
+    description: 'REDLINE STACK combines TESTCORE and FLOWCORE into a complete daily men\'s performance system designed to support vitality, energy, healthy circulation, endurance and physical performance.',
+    long_description: 'REDLINE STACK combines TESTCORE and FLOWCORE into a complete daily men\'s performance system designed to support vitality, energy, healthy circulation, endurance and physical performance. Rather than focusing on one area alone, REDLINE is designed to support performance in training, throughout the day and in everyday life — power your training, drive your day, elevate your performance. This is daily performance, not just pre-workout: use TESTCORE and FLOWCORE every day, including rest days, according to the serving directions on each label, at approximately the same time each day for best consistency. For users who tolerate the products well, the morning serving may be taken before breakfast or between meals; if stomach sensitivity occurs, take with food. Do not exceed the recommended daily serving. Train harder. Live stronger. Perform every day.',
+    price: 299.00,
+    serving_size: 'Per label — TESTCORE & FLOWCORE',
+    capsule_count: '6 bottles · 90-day supply (3× TESTCORE, 3× FLOWCORE)',
+    made_in: 'New Zealand',
+    ideal_for: 'Men wanting a complete daily performance system covering vitality, energy, circulation, endurance and training performance — used consistently as a 90-day program.',
+    signal_path: 'M0 22 L16 22 L22 6 L28 34 L34 6 L40 22 L64 22 L70 6 L76 34 L82 6 L88 22 L120 22',
+    signal_label: 'Two systems, one daily stack',
+    cta_text: 'Get the Redline Stack',
+    marketing_tagline: 'POWER YOUR TRAINING. DRIVE YOUR DAY. ELEVATE YOUR PERFORMANCE.',
+    marketing_statement: 'TESTCORE and FLOWCORE combine into one complete daily performance system — designed for training, throughout the day, and everyday life.',
+    image_url: '/images/products/redline-stack.jpg',
+    images: [
+      '/images/products/redline-stack.jpg',
+    ],
+    display_order: 7,
+    benefits: [
+      { title: 'Daily Energy & Drive', description: 'Supports consistent energy, motivation and everyday vitality.' },
+      { title: 'Blood Flow & Circulation', description: 'Supports healthy circulation and efficient blood flow throughout the body.' },
+      { title: 'Pumps & Training Performance', description: 'Supports nitric oxide production, muscle pumps and physical performance.' },
+      { title: 'Endurance', description: 'Supports stamina and the ability to maintain performance during demanding activity.' },
+      { title: 'Male Vitality', description: 'Designed to support overall male vitality, drive and confidence.' },
+      { title: 'Cardiovascular Support*', description: 'Supports normal cardiovascular and circulatory function.' },
+      { title: 'Liver & Kidney Function*', description: 'Supports normal healthy liver and kidney function as part of overall wellness.' },
+    ],
+    ingredients: [
+      { name: 'TESTCORE — Test Support', dose: '3 bottles · 60 capsules each', benefit: 'Male vitality, drive & hormone function' },
+      { name: 'FLOWCORE — Blood Flow Support', dose: '3 bottles · 60 capsules each', benefit: 'Circulation, pumps & endurance' },
     ],
   },
 ];
