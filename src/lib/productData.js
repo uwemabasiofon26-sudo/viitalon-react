@@ -212,7 +212,7 @@ export const PRODUCTS = [
     capsule_count: '6 bottles · 90-day supply (3× TESTCORE, 3× FLOWCORE)',
     made_in: 'New Zealand',
     ideal_for: 'Men wanting a complete daily performance system covering vitality, energy, circulation, endurance and training performance — used consistently as a 90-day program.',
-    signal_path: 'M0 22 L16 22 L22 6 L28 34 L34 6 L40 22 L64 22 L70 6 L76 34 L82 6 L88 22 L120 22',
+    signal_path: '',
     signal_label: 'Two systems, one daily stack',
     cta_text: 'Get the Redline Stack',
     marketing_tagline: 'POWER YOUR TRAINING. DRIVE YOUR DAY. ELEVATE YOUR PERFORMANCE.',

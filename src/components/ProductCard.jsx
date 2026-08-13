@@ -25,14 +25,14 @@ export default function ProductCard({ product, index = 0 }) {
       {/* Image */}
       <div
         className={`${
-          product.slug === 'the-stack' ? 'aspect-[16/10]' : 'aspect-[3/4]'
+          product.slug === 'the-stack' ? 'aspect-[16/10]' : product.slug === 'redline-stack' ? 'aspect-[4/5]' : 'aspect-[3/4]'
         } bg-ink-deep rounded-sm overflow-hidden mb-6 relative`}
       >
         {product.image_url &&
         <img src={product.image_url}
         alt={product.name}
         className={`w-full h-full transition-transform duration-700 group-hover:scale-105 ${
-          product.slug === 'the-stack' ? 'object-contain p-3' : 'object-cover'
+          product.slug === 'the-stack' || product.slug === 'redline-stack' ? 'object-contain p-3' : 'object-cover'
         } ${outOfStock ? 'grayscale' : ''}`} />
 
         }

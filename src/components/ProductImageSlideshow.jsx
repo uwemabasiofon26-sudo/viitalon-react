@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import SignalLine from './SignalLine';
 
-export default function ProductImageSlideshow({ images = [], fallbackImage, alt, signalPath, signalLabel, showFull = false }) {
+export default function ProductImageSlideshow({ images = [], fallbackImage, alt, signalPath, signalLabel, showFull = false, aspectClass }) {
   const [current, setCurrent] = useState(0);
   const [broken, setBroken] = useState({});
 
@@ -38,7 +38,7 @@ export default function ProductImageSlideshow({ images = [], fallbackImage, alt,
     <>
       <div
         className={`${
-          showFull ? 'aspect-[16/10]' : 'aspect-[3/4]'
+          aspectClass || (showFull ? 'aspect-[16/10]' : 'aspect-[3/4]')
         } bg-ink-surface border border-line rounded-sm overflow-hidden relative`}
       >
         {validImages.map((url, i) => (
