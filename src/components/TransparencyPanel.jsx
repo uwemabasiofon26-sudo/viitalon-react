@@ -11,9 +11,11 @@ export default function TransparencyPanel({ product }) {
   return (
     <div className="bg-ink-surface border border-line rounded-sm p-8 md:p-12">
       {/* Signal line */}
-      <div className="h-10 mb-8">
-        <SignalLine path={product.signal_path} className="w-full h-full" />
-      </div>
+      {product.signal_path && (
+        <div className="h-10 mb-8">
+          <SignalLine path={product.signal_path} className="w-full h-full" />
+        </div>
+      )}
 
       <div className="flex items-baseline justify-between mb-2">
         <div>
@@ -45,7 +47,7 @@ export default function TransparencyPanel({ product }) {
                 clickable ? 'cursor-pointer hover:bg-ink/50 -mx-2 px-2 rounded-sm' : ''
               }`}
             >
-              <div className="col-span-7 md:col-span-6">
+              <div className="col-span-7 md:col-span-6 min-w-0">
                 <div className="flex items-center gap-2">
                   <span className={`font-mono text-sm tracking-wide uppercase ${clickable ? 'group-hover:text-vital-bright transition-colors' : 'text-cream'}`}>
                     {ing.name}
@@ -54,9 +56,9 @@ export default function TransparencyPanel({ product }) {
                 </div>
                 <div className="text-ash text-xs mt-1">{ing.benefit}</div>
               </div>
-              <div className="col-span-5 md:col-span-6 flex items-center gap-3 justify-end">
+              <div className="col-span-5 md:col-span-6 flex items-center gap-3 justify-end min-w-0">
                 <div className="flex-1 h-px bg-line max-w-[120px] hidden md:block" />
-                <span className="font-mono text-sm text-vital-bright tracking-wide whitespace-nowrap">
+                <span className="font-mono text-sm text-vital-bright tracking-wide text-right">
                   {ing.dose}
                 </span>
               </div>
