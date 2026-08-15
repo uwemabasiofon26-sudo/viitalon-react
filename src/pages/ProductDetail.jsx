@@ -87,8 +87,14 @@ export default function ProductDetail() {
               {product.category}
             </div>
             <div className="h-px flex-1 bg-line max-w-[200px]" />
-            <div className="font-mono text-xs text-ash">
-              {formatPrice(product.price)}
+            <div className="font-mono text-xs text-ash flex items-center gap-2">
+              {product.compare_at_price && (
+                <span className="line-through text-ash/50">{formatPrice(product.compare_at_price)}</span>
+              )}
+              <span className={product.compare_at_price ? 'text-vital-bright' : ''}>{formatPrice(product.price)}</span>
+              {product.compare_at_price && (
+                <span className="font-mono text-[9px] tracking-widest uppercase text-vital-bright border border-vital-bright/40 px-1.5 py-0.5 rounded-sm">Launch Price</span>
+              )}
             </div>
             {outOfStock && (
               <div className="font-mono text-[10px] tracking-widest uppercase text-cream bg-ink-surface border border-line px-2.5 py-1 rounded-sm">
@@ -110,7 +116,7 @@ export default function ProductDetail() {
               alt={product.name}
               signalPath={product.signal_path}
               signalLabel={product.signal_label}
-              showFull={product.slug === 'the-stack' || product.slug === 'redline-stack'}
+              showFull={product.slug === 'the-stack' || product.slug === 'redline-stack' || product.image_fit === 'contain'}
               aspectClass={product.slug === 'redline-stack' ? 'aspect-[4/5]' : undefined}
             />
           </div>

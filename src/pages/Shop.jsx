@@ -9,6 +9,8 @@ const filters = [
   { label: 'Rest — Sleep & Recovery', value: 'rest' },
   { label: 'Clarity — Calm & Wellness', value: 'clarity' },
   { label: 'Drive — Vitality', value: 'drive' },
+  { label: 'Breakfast & Anytime Fuel', value: 'breakfast' },
+  { label: 'Single Ingredients', value: 'singles' },
   { label: 'Stacks', value: 'stack' },
 ];
 
@@ -19,6 +21,16 @@ const categoryMap = {
   'magnesium-glycinate': 'clarity',
   vigor: 'drive',
   'the-stack': 'stack',
+  'redline-stack': 'stack',
+  rise: 'breakfast',
+  nmn: 'singles',
+  'tongkat-ali': 'singles',
+  berberine: 'singles',
+  'panax-ginseng': 'singles',
+  resveratrol: 'singles',
+  'probiotic-prebiotic': 'singles',
+  nac: 'singles',
+  coq10: 'singles',
 };
 
 export default function Shop() {
@@ -44,10 +56,10 @@ export default function Shop() {
         <div className="max-w-7xl mx-auto">
           <div className="eyebrow mb-3">The Range</div>
           <h1 className="font-display font-light text-5xl md:text-7xl text-cream leading-tight">
-            Five formulas.<br />One system.
+            The Full Range.<br />Every Signal.
           </h1>
           <p className="text-ash mt-6 max-w-xl text-base md:text-lg">
-            Fully disclosed, high-strength supplements for training, strength, recovery, and everyday vitality. Find the signal that matches your goal.
+            Fully disclosed, high-strength supplements for training, strength, recovery, breakfast, and everyday vitality — plus a full range of single-ingredient formulas. Find the signal that matches your goal.
           </p>
         </div>
       </section>

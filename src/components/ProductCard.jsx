@@ -32,7 +32,7 @@ export default function ProductCard({ product, index = 0 }) {
         <img src={product.image_url}
         alt={product.name}
         className={`w-full h-full transition-transform duration-700 group-hover:scale-105 ${
-          product.slug === 'the-stack' || product.slug === 'redline-stack' ? 'object-contain p-3' : 'object-cover'
+          product.slug === 'the-stack' || product.slug === 'redline-stack' || product.image_fit === 'contain' ? 'object-contain p-3' : 'object-cover'
         } ${outOfStock ? 'grayscale' : ''}`} />
 
         }
@@ -64,7 +64,12 @@ export default function ProductCard({ product, index = 0 }) {
 
       {/* Price */}
       <div className="flex items-center justify-between mt-auto pt-4 border-t border-line">
-        <span className="font-mono text-sm text-cream">{formatPrice(product.price)}</span>
+        <span className="font-mono text-sm text-cream flex items-center gap-2">
+          {product.compare_at_price && (
+            <span className="line-through text-ash/50 text-xs">{formatPrice(product.compare_at_price)}</span>
+          )}
+          {formatPrice(product.price)}
+        </span>
         <span className="tracking-widest uppercase text-ash group-hover:text-vital-bright transition-colors text-xs [font-family:'Inter',_ui-sans-serif,_system-ui,_sans-serif] font-light">VIEW FORMULA →
 
         </span>

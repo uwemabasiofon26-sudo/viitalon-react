@@ -11,7 +11,11 @@
 //   STRIPE_SECRET_KEY        (already set for checkout)
 //   STRIPE_WEBHOOK_SECRET    (from the Stripe webhook you create — see README)
 //   RESEND_API_KEY           (from resend.com — free tier is fine)
-//   ORDER_NOTIFICATION_EMAIL (optional, defaults to info@viitalon.com)
+//   ORDER_NOTIFICATION_EMAIL (optional, defaults to info@viitalon.com —
+//                             comma-separate for multiple internal addresses)
+//   SUPPLIER_NOTIFICATION_EMAIL (optional, defaults to sales@edh.nz —
+//                             the fulfilment supplier who ships the order;
+//                             comma-separate for multiple)
 //   ORDER_NOTIFICATION_FROM  (optional, defaults to orders@viitalon.com —
 //                             must be on a domain verified in Resend)
 //   SITE_URL                 (optional, defaults to https://viitalon.com —
@@ -233,7 +237,19 @@ async function sendCustomerConfirmation(session) {
 // ---------------------------------------------------------------------------
 
 async function sendMerchantNotification(session) {
-  const notifyTo = process.env.ORDER_NOTIFICATION_EMAIL || 'info@viitalon.com';
+  // Every completed order goes to Viitalon (for records) and to the
+  // fulfilment supplier at sales@edh.nz (so they can pack & ship
+  // directly) in the same email. Add more addresses to
+  // ORDER_NOTIFICATION_EMAIL (comma-separated) if needed later.
+  const internalRecipients = (process.env.ORDER_NOTIFICATION_EMAIL || 'info@viitalon.com')
+    .split(',')
+    .map((addr) => addr.trim())
+    .filter(Boolean);
+  const supplierRecipients = (process.env.SUPPLIER_NOTIFICATION_EMAIL || 'sales@edh.nz')
+    .split(',')
+    .map((addr) => addr.trim())
+    .filter(Boolean);
+  const notifyTo = [...new Set([...internalRecipients, ...supplierRecipients])];
   const fromAddress = process.env.ORDER_NOTIFICATION_FROM || 'orders@viitalon.com';
 
   const items = session.line_items?.data || [];

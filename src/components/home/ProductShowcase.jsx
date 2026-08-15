@@ -8,19 +8,23 @@ export default function ProductShowcase() {
   const [products, setProducts] = useState(PRODUCTS);
 
   useEffect(() => {
-    base44.entities.Product.list('display_order', 10).
+    base44.entities.Product.list('display_order', 20).
     then((data) => {
       if (data && data.length > 0) setProducts(data);
     }).
     catch(() => {});
   }, []);
 
+  // Only a curated set appears on the home page — everything else (the
+  // rest of the single-ingredient range) lives behind "View Full Range".
+  const homeProducts = products.filter((p) => p.featured_home);
+
   return (
     <section className="py-20 md:py-32 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col items-center text-center mb-12 md:mb-16 gap-4">
-          <h2 className="text-4xl md:text-6xl text-cream leading-tight [font-family:'EB_Garamond',_serif] font-bold">Five Products.
-One system.
+          <h2 className="text-4xl md:text-6xl text-cream leading-tight [font-family:'EB_Garamond',_serif] font-bold">The Range.
+Fully Disclosed.
           </h2>
           <p className="text-ash max-w-md text-sm md:text-base">
             Each product is treated as a distinct performance signal — not just another SKU on a shelf. Find the one that matches your goal.
@@ -29,7 +33,7 @@ One system.
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {products.map((p, i) =>
+          {homeProducts.map((p, i) =>
           <ProductCard key={p.id || p.slug} product={p} index={i} />
           )}
 

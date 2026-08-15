@@ -10,6 +10,7 @@ const productLinks = [
 { name: 'Somnus', slug: 'somnus', goal: 'Rest — Sleep & Recovery' },
 { name: 'Magnesium Glycinate', slug: 'magnesium-glycinate', goal: 'Clarity — Calm & Wellness' },
 { name: 'Vigor', slug: 'vigor', goal: "Drive — Men's Vitality" },
+{ name: 'Rise', slug: 'rise', goal: 'Breakfast & Anytime Fuel' },
 { name: 'The Stack', slug: 'the-stack', goal: 'Complete — All Five Formulas' },
 { name: 'Redline Stack', slug: 'redline-stack', goal: "Total — Men's Performance System" }];
 
@@ -106,6 +107,12 @@ export default function Navbar() {
                     <div className="font-mono text-[10px] tracking-widest uppercase text-ash mt-0.5">{p.goal}</div>
                   </Link>
                 )}
+                <Link
+                  to="/shop"
+                  className="block px-5 py-3 border-t border-line hover:bg-ink transition-colors group">
+                  <div className="font-body font-medium text-sm text-cream group-hover:text-vital-bright transition-colors">Single Ingredients</div>
+                  <div className="font-mono text-[10px] tracking-widest uppercase text-ash mt-0.5">NMN, Tongkat Ali, Berberine &amp; more</div>
+                </Link>
               </div>
             </div>
 
@@ -192,6 +199,9 @@ export default function Navbar() {
                         {p.name}
                       </Link>
                     )}
+                    <Link to="/shop" className="block font-body text-sm text-cream hover:text-vital-bright transition-colors py-2">
+                      Single Ingredients
+                    </Link>
                   </div>
                 </div>
               </div>

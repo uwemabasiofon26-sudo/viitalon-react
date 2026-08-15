@@ -103,6 +103,7 @@ export default function Footer() {
               { name: 'Somnus', slug: 'somnus' },
               { name: 'Magnesium Glycinate', slug: 'magnesium-glycinate' },
               { name: 'Vigor', slug: 'vigor' },
+              { name: 'Rise', slug: 'rise' },
               { name: 'The Stack', slug: 'the-stack' },
               { name: 'Redline Stack', slug: 'redline-stack' }].
               map((p) =>
@@ -112,6 +113,11 @@ export default function Footer() {
                   </Link>
                 </li>
               )}
+              <li>
+                <Link to="/shop" className="text-cream-dim hover:text-vital-bright transition-colors text-sm">
+                  Single Ingredients
+                </Link>
+              </li>
             </ul>
           </div>
 

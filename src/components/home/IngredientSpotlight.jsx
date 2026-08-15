@@ -10,7 +10,7 @@ import { PRODUCTS } from '@/lib/productData';
 // with no manual exclusion list to maintain.
 const activeIngredientKeys = new Set(
   PRODUCTS
-    .filter((p) => p.slug !== 'the-stack')
+    .filter((p) => p.slug !== 'the-stack' && p.slug !== 'redline-stack')
     .flatMap((p) => p.ingredients.map((ing) => normalizeIngredientName(ing.name)))
 );
 
