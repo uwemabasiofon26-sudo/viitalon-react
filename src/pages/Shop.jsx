@@ -31,6 +31,7 @@ const categoryMap = {
   'probiotic-prebiotic': 'singles',
   nac: 'singles',
   coq10: 'singles',
+  'b-complex': 'singles',
 };
 
 export default function Shop() {
