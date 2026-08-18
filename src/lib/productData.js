@@ -315,6 +315,7 @@ export const PRODUCTS = [
   {
     name: 'RISE',
     slug: 'rise',
+    in_stock: false,
     category: 'Breakfast & Anytime Fuel',
     tagline: 'A complete high-protein breakfast — 30g protein and 5g creatine in every serving, ready in seconds.',
     description: 'A complete high-protein breakfast combining quality whey protein, wholegrain oats, creatine monohydrate, fibre, and essential vitamins and minerals in one convenient meal.',
