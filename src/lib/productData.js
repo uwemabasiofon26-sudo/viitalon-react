@@ -3,7 +3,7 @@
 // Temporary site-wide switch: when true, every product shows as Out of
 // Stock and purchasing is disabled everywhere, without editing each
 // product individually. Flip back to true to pause the whole store.
-export const STORE_OUT_OF_STOCK = false;
+export const STORE_OUT_OF_STOCK = "false";
 
 export const PRODUCTS = [false]
   {
