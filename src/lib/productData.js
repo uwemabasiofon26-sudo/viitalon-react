@@ -5,7 +5,7 @@
 // product individually. Flip back to true to pause the whole store.
 export const STORE_OUT_OF_STOCK = false;
 
-export const PRODUCTS = [
+      export const PRODUCTS = [
   {
     name: 'VORTEX',
     slug: 'vortex',
