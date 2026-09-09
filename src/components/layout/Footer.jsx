@@ -104,8 +104,7 @@ export default function Footer() {
               { name: 'Magnesium Glycinate', slug: 'magnesium-glycinate' },
               { name: 'Vigor', slug: 'vigor' },
               { name: 'Rise', slug: 'rise' },
-              { name: 'The Stack', slug: 'the-stack' },
-              { name: 'Redline Stack', slug: 'redline-stack' }].
+              { name: 'The Stack', slug: 'the-stack' }].
               map((p) =>
               <li key={p.slug}>
                   <Link to={`/products/${p.slug}`} className="text-cream-dim hover:text-vital-bright transition-colors text-sm">

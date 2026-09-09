@@ -21,7 +21,6 @@ const categoryMap = {
   'magnesium-glycinate': 'clarity',
   vigor: 'drive',
   'the-stack': 'stack',
-  'redline-stack': 'stack',
   rise: 'breakfast',
   nmn: 'singles',
   'tongkat-ali': 'singles',

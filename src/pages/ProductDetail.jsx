@@ -116,8 +116,7 @@ export default function ProductDetail() {
               alt={product.name}
               signalPath={product.signal_path}
               signalLabel={product.signal_label}
-              showFull={product.slug === 'the-stack' || product.slug === 'redline-stack' || product.image_fit === 'contain'}
-              aspectClass={product.slug === 'redline-stack' ? 'aspect-[4/5]' : undefined}
+              showFull={product.slug === 'the-stack' || product.image_fit === 'contain'}
             />
           </div>
 

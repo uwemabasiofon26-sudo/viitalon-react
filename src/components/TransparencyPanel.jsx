@@ -7,9 +7,9 @@ import { getIngredientData } from '@/lib/ingredientData';
 export default function TransparencyPanel({ product }) {
   const [selected, setSelected] = useState(null);
 
-  // Products that ship as two separate bottles (e.g. REDLINE STACK) carry
-  // their own real supplement-facts labels — rendered side by side here
-  // instead of the single-formula ingredient list below.
+  // Products that ship as two separate bottles carry their own real
+  // supplement-facts labels — rendered side by side here instead of the
+  // single-formula ingredient list below.
   if (product?.supplement_facts?.length) {
     return (
       <div className="bg-ink-surface border border-line rounded-sm p-8 md:p-12">

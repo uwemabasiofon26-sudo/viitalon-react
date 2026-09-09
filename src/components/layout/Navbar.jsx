@@ -11,8 +11,7 @@ const productLinks = [
 { name: 'Magnesium Glycinate', slug: 'magnesium-glycinate', goal: 'Clarity — Calm & Wellness' },
 { name: 'Vigor', slug: 'vigor', goal: "Drive — Men's Vitality" },
 { name: 'Rise', slug: 'rise', goal: 'Breakfast & Anytime Fuel' },
-{ name: 'The Stack', slug: 'the-stack', goal: 'Complete — All Five Formulas' },
-{ name: 'Redline Stack', slug: 'redline-stack', goal: "Total — Men's Performance System" }];
+{ name: 'The Stack', slug: 'the-stack', goal: 'Complete — All Five Formulas' }];
 
 
 const navLinks = [
