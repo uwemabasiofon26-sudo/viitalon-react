@@ -1,0 +1,16 @@
+{
+  "name": "Korzavo — Performance Nutrition & Supplements",
+  "short_name": "Korzavo",
+  "description": "Korzavo is a performance nutrition and supplement brand. Fully disclosed pre-workout, creatine, protein, daily performance and recovery formulas.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A2426",
+  "theme_color": "#0A2426",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
